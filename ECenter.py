@@ -13,6 +13,6 @@ for city in city_codes:
  url = "https://static.edeka.de/media/handzettel/MINDEN/"+city+"/blaetterkatalog/pdf/complete.pdf"
  myfile = requests.get(url)
  for name in market_name:
-  with open('C:\Users\user\Desktop\LeafletFiles\{0}_{1}_{2}.pdf'.format(market_type,name,str(weekNumber)), 'w') as pdf:
+  with open('{0}_{1}_{2}.pdf'.format(market_type,name,str(weekNumber)), 'wb') as pdf:
     pdf.write(myfile.content)
 
