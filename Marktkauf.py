@@ -13,10 +13,9 @@ url_parts = ["20018_Loehne", "20004_Herford", "20009_Buende", "20071_Espelkamp",
 "20046_Hameln", "20002_Osnabrueck", "20007_Luebbecke", "20017_Meppen", "20026_Wilhelmshaven", "20102_Osterholz_Scharmbeck", "20022_Wunstorf", 
 "20025_Hannover","20555_Stuhr"]
 
-for part in url_parts: #for loop to loop through the location keys
- url = "https://static.edeka.de/media/handzettel/MINDEN/MARKTKAUF_"+part+"/blaetterkatalog/pdf/complete.pdf" #API URL
+for (i,j) in zip(market_name,url_parts): #for loop to loop through the location keys
+ url = "https://static.edeka.de/media/handzettel/MINDEN/MARKTKAUF_"+j+"/blaetterkatalog/pdf/complete.pdf" #API URL
  myfile = requests.get(url) #gettting the info from the API using the get method of the requests library
- for name in market_name: #for loop to loop through the nomenclature variables
-  with open('{0}_{1}_{2}.pdf'.format(market_type,name,str(weekNumber)), 'wb') as pdf: #opening file to save the PDF
+ with open('{0}_{1}_{2}.pdf'.format(market_type,i,str(weekNumber)), 'wb') as pdf: #opening file to save the PDF
     pdf.write(myfile.content) #writing of the PDF
 
